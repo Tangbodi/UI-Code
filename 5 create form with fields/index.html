@@ -7,8 +7,11 @@
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
         const error = document.getElementById('error');
-        error.innerHTML = (!first_name || !email) ? 'First Name & Email both values are required.' : '';
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var phoneRegex = /^[0-9]+$/;
+       
         if (first_name && email) {
+            if(email.match(mailformat)&&phone.match(phoneRegex)&&phone.length==10){
             const tableElement = document.getElementById('table');
             const trElement = document.createElement('tr');
             const tbodyElement = document.createElement('tbody');
@@ -30,7 +33,22 @@
             trElement.appendChild(PICTURE);
             tbodyElement.appendChild(trElement);
             tableElement.appendChild(tbodyElement);
-
+                return true;
+            }
+            else if(!email.match(mailformat)){
+                alert("You have entered an invalid email address!");
+                email.focus();
+                return false;
+            }
+            else if(!phone.match(phoneRegex)||phone.length!=10){
+                alert("You have entered an invalid phone number!");
+                phone.focus();
+                return false;
+            }
+        }
+        else
+        {
+            alert(" First Name & Email both values are required");
         }
     }
 </script>
@@ -96,7 +114,10 @@
         <div class="form">
             <label>First Name: <input id="first_name" type="text"></label>
             <label>Last Name: <input id="last_name" type="text"></label>
-            <label>Email: <input id="email" type="text"></label>
+            <label >Email: <input id ="email" type ="text">
+                <script src = "invalid.js">
+                </script>
+            </label>
             <label>Phone: <input id="phone" type="text"></label>
             <label>Profil Picture: <input id="image-input" type="file" accept="image/png, image/jpg, image/jpeg">
             <div id="display-image"></div>
