@@ -6,8 +6,6 @@
         const last_name = document.getElementById('last_name').value;
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
-        const picture = document.getElementById('picture').value;
-        
         const error = document.getElementById('error');
         error.innerHTML = (!first_name || !email) ? 'First Name & Email both values are required.' : '';
         if (first_name && email) {
@@ -18,18 +16,21 @@
             const LASTNAME = document.createElement('td');
             const EMAIL = document.createElement('td');
             const PHONE = document.createElement('td');
+            const PICTURE = document.getElementById('display-image');
+
             FIRSTNAME.innerHTML = first_name;
             LASTNAME.innerHTML = last_name;
             EMAIL.innerHTML = email;
             PHONE.innerHTML = phone;
             
-
             trElement.appendChild(FIRSTNAME);
             trElement.appendChild(LASTNAME);
             trElement.appendChild(EMAIL);
             trElement.appendChild(PHONE);
+            trElement.appendChild(PICTURE);
             tbodyElement.appendChild(trElement);
             tableElement.appendChild(tbodyElement);
+
         }
     }
 </script>
@@ -46,14 +47,13 @@
         }
 
         div.form {
-            height: 200px;
+            height: 700px;
         }
 
         label {
             margin: 20px;
             display: block;
             font-size: 32px;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
         }
 
         input {
@@ -61,7 +61,7 @@
         }
 
         span {
-            color: red;
+            color: rgb(221, 19, 19);
             position: fixed;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -73,24 +73,21 @@
             left: 50%;
             position: fixed;
             transform: translate(-50%, -50%);
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
         }
 
         div#tables {
-            height: 300px;
+            height: 400px;
             overflow: auto;
         }
 
         table,
         th,
         td {
-            border: 1px solid red;
+            border: 1px solid rgb(32, 30, 30);
             border-collapse: collapse;
-            font-size: 32px;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+            font-size: 27px;
             padding: 10px;
         }
-
         th {
             width: 20%;
         }
@@ -101,8 +98,12 @@
             <label>Last Name: <input id="last_name" type="text"></label>
             <label>Email: <input id="email" type="text"></label>
             <label>Phone: <input id="phone" type="text"></label>
-            <label>Profil Picture: <input id="picture" type="text"></label>
-            
+            <label>Profil Picture: <input id="image-input" type="file" accept="image/png, image/jpg, image/jpeg">
+            <div id="display-image"></div>
+            <link rel="stylesheet" href="style.css">
+            <script src = "app.js">
+            </script>
+            </label>
             <span id="error"></span>
             <button onclick="publishToTable()">Submit</button>
         </div>
@@ -110,6 +111,11 @@
             <table id="table">
                 <thead>
                     <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Picture</th>
                     </tr>
                 </thead>
             </table>
