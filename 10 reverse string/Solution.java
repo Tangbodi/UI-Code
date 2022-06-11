@@ -1,6 +1,4 @@
-//please test code in Java IDE
-package 10 reverse string;
-
+//You may need to run the code using Java IDE
 public class Solution {
     public static void main(String[]args){
         String str ="abcdefg";

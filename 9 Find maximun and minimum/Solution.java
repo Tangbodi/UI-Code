@@ -1,4 +1,4 @@
-//Please Test Code Using Java IDE
+//You may need to run the code using Java IDE
 import java.util.*;
 
 public class Solution {
